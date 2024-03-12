@@ -1,20 +1,13 @@
 // import { useState } from "react"
-import { Navigate } from "react-router-dom"
+import { Navigate } from "react-router-dom";
 
-const PrivateRoute = ({children})=>{
-    console.log("children=======>",children)
-    // const [token,setToken] = useState("")
-    // const navigate = useNavigate()
-    if(localStorage.getItem("token")){
-        // console.log("if==========")
-        return children
+const PrivateRoute = ({ children }) => {
+  // console.log("children=======>",children)
+  if (localStorage.getItem("token")) {
+    return children;
+  } else {
+    return <Navigate to="/" />;
+  }
+};
 
-    }else{
-        // console.log("else==========");
-        return <Navigate to="/" />
-
-    }
-
-}
-
-export default PrivateRoute
+export default PrivateRoute;
